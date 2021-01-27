@@ -22,6 +22,9 @@ export default function ({ redirect, store,route }) {
         if(route.path === '/authorize'){
             return;
         }
+        if(route.path === '/register'){
+            return;
+        }
         if(route.path !== '/login'){
             localStorage.clear('authorization');
             redirect('/login');

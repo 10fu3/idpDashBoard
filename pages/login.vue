@@ -28,6 +28,9 @@
                  <v-card-actions>
                      <v-btn block color="info" @click="login">ログイン</v-btn>
                  </v-card-actions>
+                 <v-card-actions>
+                     <v-btn block color="success" to="register">新規登録はこちら</v-btn>
+                 </v-card-actions>
                  <!-- <v-card-actions>
                      <v-btn block color="success">新規登録</v-btn>
                  </v-card-actions> -->
