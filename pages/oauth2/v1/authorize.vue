@@ -41,7 +41,7 @@
                         <v-divider></v-divider>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn block color="info" @click="login">ログイン</v-btn>
+                            <v-btn block color="info" @click="login">承認する</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -66,7 +66,6 @@
         created: function () {
             var params = window.location.search.slice(1).split('&').map(p=>{return p.split("=")[0]});
             if(!(params.includes("response_type") && params.includes("client_id") && params.includes("redirect_uri")&& params.includes("state")&& params.includes("scope"))){
-                //alert(params.includes("response_type")+" "+params.includes("client_id")+" "+params.includes("redirect_uri")+" "+params.includes("state")+" "+params.includes("scope"))
                 location.href = "/";
                 return;
             }
@@ -105,7 +104,7 @@
                             })
                         }).then(d=>d.json()).then(service_json=>{
                             this.service_name = service_json.service_name;
-                            this.service_icon = service_json.icon_url;
+                            this.service_icon = service_json.icon_uri;
                             this.service_description = service_json.description;
                             let perm = window.location.search.slice(1).split('&').filter(e=>e.includes("scope")).map(p=>p.split("=")[1].split("%20")).flat();
                             for(var index = 0;index<perm.length;index++){
@@ -119,30 +118,6 @@
                                     case "email":
                                         this.perms.push("あなたのメールアドレスを取得します");
                                         break;
-                                    // case "read_uuid":
-                                    //     this.perms.push("あなたを識別します");
-                                    //     break;
-                                    // case "edit_uuid":
-                                    //     this.perms.push("識別するためのIDを編集します");
-                                    //     break;
-                                    // case "read_mail":
-                                    //     this.perms.push("あなたのメールアドレスを読み取ります");
-                                    //     break;
-                                    // case "edit_mail":
-                                    //     this.perms.push("登録されたメールアドレスを編集します");
-                                    //     break;
-                                    // case "read_profile":
-                                    //     this.perms.push("あなたのプロフィールを読み取ります");
-                                    //     break;
-                                    // case "edit_profile":
-                                    //     this.perms.push("あなたのプロフィールを編集します");
-                                    //     break;
-                                    // case "read_last_login_time":
-                                    //     this.perms.push("最後にログインした時刻を読み取ります");
-                                    //     break;
-                                    // case "delete_self_account":
-                                    //     this.perms.push("あなたのアカウントを削除します");
-                                    //     break;
                                 }
                             }
                         }).catch(e=>{
@@ -163,10 +138,18 @@
                         'Content-Type': 'text/plain;charset=UTF-8',
                         'Authorization': localStorage.getItem('authorization'), 
                     },
-                }).then(d=>d.json()).then(j=>{
-                    location.href = j.redirect;
+                }).then(d=>{
+                    if(d.ok){
+                        return d.json();
+                    }
+                }).then(j=>{
+                    if(j.redirect){
+                        location.href = j.redirect;
+                    }else{
+                        location.href = "/";
+                    }
                 }).catch(e=>{
-                    alert("エラー");
+                    location.href = "/";
                 });
             }
 

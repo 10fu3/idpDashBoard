@@ -147,6 +147,7 @@ export default {
                                 if(window.location.search.includes("redirect")){
                                     let perm = window.location.search.slice(1).split('?redirect=').filter(e=>e.includes("redirect"))[0].replace("redirect=","");
                                     location.href = decodeURIComponent(perm);
+                                    return;
                                 }
                             }
                             location.href = "/";
@@ -157,6 +158,7 @@ export default {
                                 if(window.location.search.includes("redirect")){
                                     let perm = window.location.search.slice(1).split('?redirect=').filter(e=>e.includes("redirect"))[0].replace("redirect=","");
                                     location.href = decodeURIComponent(perm);
+                                    return;
                                 }
                         }
                         location.href = "/";
