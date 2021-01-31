@@ -63,7 +63,7 @@
                 perms: []
             };
         },
-        created: function () {
+        mounted: function () {
             var params = window.location.search.slice(1).split('&').map(p=>{return p.split("=")[0]});
             if(!(params.includes("response_type") && params.includes("client_id") && params.includes("redirect_uri")&& params.includes("state")&& params.includes("scope"))){
                 location.href = "/";

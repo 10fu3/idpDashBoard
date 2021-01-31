@@ -91,7 +91,9 @@
                       </v-container>
                     </v-card-text>
                     <v-card-actions>
-                    
+                      <v-btn color="error" block>
+                        アカウントを削除
+                      </v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>

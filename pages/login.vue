@@ -105,20 +105,20 @@ export default {
             methods: {
 
                 continue_: function () {
-                    location.href = "/";
+                    this.$router.push('/')
                 },
                 logout: function () {
 
-                    let response = fetch(this.apiserver+'/api/v1/account/logout', {
-                        method: 'get',
+                    fetch(this.apiserver+'/api/v1/account/logout', {
+                        method: 'post',
+                        mode: 'cors',
                         headers: new Headers({
                             'Authorization': localStorage.getItem('authorization'), 
                         })
-                    });
-                    
-                    localStorage.removeItem('authorization');
-
-                    location.href = "/login";
+                    }).then(j=>{
+                        localStorage.removeItem('authorization');
+                        location.href = "/login"
+                    })
                 },
                 login: function () {
                     if(!this.isSSO){
@@ -150,7 +150,7 @@ export default {
                                     return;
                                 }
                             }
-                            location.href = "/";
+                            this.$router.push('/')
                         });
                     }else{
                         if(j.authorization != undefined){
@@ -161,7 +161,7 @@ export default {
                                     return;
                                 }
                         }
-                        location.href = "/";
+                        this.$router.push('/')
                     }
                 }
             }

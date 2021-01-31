@@ -203,7 +203,7 @@
             body: JSON.stringify(sendData)
           })
           .then((res)=>{
-            if(!res.ok){
+            if(res.ok){
               return {};
             }
             return res.json();
@@ -214,9 +214,7 @@
               alert('サービスの追加に成功しました');
               location.href = "/service_management"
             }
-          }).catch((r)=>{
-            alert("エラーが発生しました");
-          })
+          });
         };
 
         var data = {};
