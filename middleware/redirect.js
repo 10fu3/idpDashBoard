@@ -20,7 +20,7 @@ export default function ({ redirect, store,route }) {
         });
     }else{
         console.log(route.path);
-        if(route.path.includes('/oauth2/v1/authorize')){
+        if(route.path === '/oauth2/v1/authorize'){
             return;
         }
         if(route.path === '/register'){
