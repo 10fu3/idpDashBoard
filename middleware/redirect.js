@@ -19,8 +19,7 @@ export default function ({ redirect, store,route }) {
             redirect('/login');
         });
     }else{
-        console.log(route.path);
-        if(route.path === '/oauth2/v1/authorize'){
+        if(route.path.includes('/oauth2/v1/authorize')){
             return;
         }
         if(route.path === '/register'){
