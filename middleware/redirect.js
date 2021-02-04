@@ -1,4 +1,7 @@
-function isLogin(yes,no){
+export default function ({ redirect, store,route }) {
+    
+    let apiserver = 'http://localhost';
+
     if(localStorage.getItem('authorization')){
         let response = fetch(apiserver+'/api/v1/account/token', {
             method: 'get',
@@ -7,34 +10,25 @@ function isLogin(yes,no){
             })
         });
         response.then(r=>{
-            if(r.ok){
-               yes(); 
-            }else{
-               no();
-            }
-        }).catch(e=>{
-            no();
-        });
-    }
-}
-
-export default function ({ redirect, store,route }) {
-    
-    let apiserver = 'http://localhost';
-
-    switch(route.path){
-        case "/account_info":
-        case "/account_link":
-        case "/server_detail":
-        case "/service_create":
-        case "/service_management":
-        case "/settings":
-            isLogin(()=>{
-                
-            },()=>{
+            if(!r.ok){
                 localStorage.clear('authorization');
                 redirect('/login');
-            });
-            break;
+            }
+        }).catch(e=>{
+            localStorage.clear('authorization');
+            redirect('/login');
+        });
+    }else{
+        console.log(route.path);
+        if(route.path.includes('/oauth2/v1/authorize')){
+            return;
+        }
+        if(route.path === '/register'){
+            return;
+        }
+        if(route.path !== '/login'){
+            localStorage.clear('authorization');
+            redirect('/login');
+        }
     }
   }
