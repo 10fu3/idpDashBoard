@@ -132,7 +132,7 @@
         },
         methods: {
             login: function () {
-                fetch(this.api_server+location.href.replace("http://localhost:3000",""), { 
+                fetch(this.api_server+location.href.replace(document.URL.split(":")[0]+"://"+document.domain,""), { 
                     method: 'post',
                     headers: {
                         'Content-Type': 'text/plain;charset=UTF-8',
