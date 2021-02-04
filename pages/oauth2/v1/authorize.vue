@@ -132,8 +132,7 @@
         },
         methods: {
             login: function () {
-                var a = location.href.replace(String(document.URL.split(":")[0]+"://"+document.domain),"");
-                fetch(this.api_server+String, { 
+                fetch(this.api_server+location.href.replace(String(document.URL.split(":")[0]+"://"+document.domain),""), { 
                     method: 'post',
                     headers: {
                         'Content-Type': 'text/plain;charset=UTF-8',
