@@ -132,10 +132,8 @@
         },
         methods: {
             login: function () {
-                alert(String(document.URL.split(":")[0]+"://"+document.domain));
-                alert(location.href.replace(String(document.URL.split(":")[0]+"://"+document.domain),""));
-                alert(this.api_server+" "+location.href.replace(String(document.URL.split(":")[0]+"://"+document.domain),""));
-                fetch(this.api_server+location.href.replace(String(document.URL.split(":")[0]+"://"+document.domain),"") , { 
+                var a = location.href.replace(String(document.URL.split(":")[0]+"://"+document.domain),"");
+                fetch(String(a), { 
                     method: 'post',
                     headers: {
                         'Content-Type': 'text/plain;charset=UTF-8',
