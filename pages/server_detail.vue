@@ -48,9 +48,11 @@
                       <div v-if="list.id ==='icon_url'" @dragover.prevent @drop.prevent="drop" >
                         <v-container>
                           <p>{{list.category}}</p>
+						  <v-layout justify-center class="mb-5">
                           <v-avatar>
                             <v-img :src="list.value"></v-img>
                           </v-avatar>
+						  </v-layout>
                           <v-expansion-panels :key="list.id+'-panel'">
                             <v-expansion-panel>
                               <v-expansion-panel-header>変更</v-expansion-panel-header>
