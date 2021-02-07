@@ -176,7 +176,7 @@
       },
       change_request: function (id,changeVal,index) {
         this.lists[index].input = '';
-        var apiserver = "http://localhost";
+        var apiserver = "http://den3-sit.tk";
         var value = null;
         var mes = '';
         if(id === "icon"){
@@ -192,7 +192,7 @@
 
         var reload = function (lists) {
           let list = []
-          var apiserver = 'http://localhost';
+          var apiserver = 'http://den3-sit.tk';
           let response = fetch(apiserver+'/api/v1/account/', {
               method: 'get',
               headers: new Headers({
@@ -268,7 +268,7 @@
       },
       reload: function () {
         let list = []
-        var apiserver = 'http://localhost';
+        var apiserver = 'http://den3-sit.tk';
         let response = fetch(apiserver+'/api/v1/account/', {
             method: 'get',
             headers: new Headers({
@@ -299,7 +299,7 @@
     },
     created: function(){
       let list = []
-      var apiserver = 'http://localhost';
+      var apiserver = 'http://den3-sit.tk';
       let response = fetch(apiserver+'/api/v1/account/', {
           method: 'get',
           headers: new Headers({
