@@ -91,7 +91,7 @@
 export default {
 	created: function() {
 		this.query = this.$route.query.id;
-		var apiserver = "http://localhost";
+		var apiserver = "http://den3-sit.tk";
 		fetch(apiserver + '/api/v1/service?id=' + this.$route.query.id, {
 			method: 'get',
 			headers: new Headers({
@@ -120,7 +120,7 @@ export default {
 	},
 	methods: {
     remove: function (params) {
-      var apiserver = "http://localhost";
+      var apiserver = "http://den3-sit.tk";
      	var sendbody = {};
 			sendbody['client_id'] = this.lists[0].value;
 					fetch(apiserver + '/api/v1/service', {
@@ -208,7 +208,7 @@ export default {
 				sendbody['client_id'] = this.lists[0].value;
 				sendbody['secret_update'] = 'update';
 				var send = function() {
-					var apiserver = "http://localhost";
+					var apiserver = "http://den3-sit.tk";
 					fetch(apiserver + '/api/v1/service', {
 						method: 'put',
 						headers: new Headers({
@@ -250,7 +250,7 @@ export default {
 					return;
 				}
 
-				var apiserver = "http://localhost";
+				var apiserver = "http://den3-sit.tk";
 
 				var icon_get_url = function(file, lists, callback) {
 					const formData = new FormData();
@@ -324,7 +324,7 @@ export default {
 		return {
 			query: '',
 			load: function(lists, query) {
-				var apiserver = "http://localhost";
+				var apiserver = "http://den3-sit.tk";
 				fetch(apiserver + '/api/v1/service?id=' + query, {
 					method: 'get',
 					headers: new Headers({

@@ -78,7 +78,7 @@
             if(localStorage.getItem("authorization") === null){
                 this.$router.push({ path:`/login?redirect=${encodeURI(location.href)}` })
             }
-            this.api_server = "http://localhost";      
+            this.api_server = "http://den3-sit.tk";      
             let token_response = fetch(this.api_server+'/api/v1/account/token', {
                     method: 'get',
                     headers: new Headers({

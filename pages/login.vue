@@ -77,7 +77,7 @@ export default {
                 };
             },
     created: function () {
-                this.apiserver = 'http://localhost';
+                this.apiserver = 'http://den3-sit.tk';
 
                 if(localStorage.getItem('authorization')){
                     let response = fetch(this.apiserver+'/api/v1/account/token', {

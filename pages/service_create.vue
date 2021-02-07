@@ -176,7 +176,7 @@
             return;
         }
 
-        var apiserver = "http://localhost";
+        var apiserver = "http://den3-sit.tk";
 
         var icon_get_url = function (file,callback) {
             const formData = new FormData();
