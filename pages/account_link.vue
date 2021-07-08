@@ -45,7 +45,7 @@
 <script>
 export default {
     created: function(){
-        this.apiserver = 'http://localhost';
+        this.apiserver = 'http://den3-sit.tk';
         if(localStorage.getItem('authorization')){
             let response = fetch(this.apiserver+'/oauth2/v1/token/', {
                 method: 'get',

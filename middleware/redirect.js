@@ -1,6 +1,6 @@
 export default function ({ redirect, store,route }) {
     
-    let apiserver = 'http://localhost';
+    let apiserver = 'https://den3-idp.herokuapp.com';
 
     if(localStorage.getItem('authorization')){
         let response = fetch(apiserver+'/api/v1/account/token', {
