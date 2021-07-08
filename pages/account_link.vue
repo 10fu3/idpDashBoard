@@ -45,12 +45,12 @@
 <script>
 export default {
     created: function(){
-        this.apiserver = 'http://den3-sit.tk';
+        this.apiserver = 'https://den3-idp.herokuapp.com';
         if(localStorage.getItem('authorization')){
             let response = fetch(this.apiserver+'/oauth2/v1/token/', {
                 method: 'get',
                 headers: new Headers({
-                    'Authorization': localStorage.getItem('authorization'), 
+                    'Authorization': localStorage.getItem('authorization'),
                 })
             });
             response.then(r=>{
@@ -69,20 +69,20 @@ export default {
                 }
             })
         }
-                        
+
     },
     methods: {
         deleteLink: function(index){
             var response = fetch(this.apiserver+'/oauth2/v1/revoke/', {
                 method: 'post',
                 headers: new Headers({
-                    'Authorization': localStorage.getItem('authorization'), 
+                    'Authorization': localStorage.getItem('authorization'),
                 }),
                 body: JSON.stringify({
                     id: this.services[index].id
                 })
             });
-            
+
             response.then(r=>{
                 if(r.ok){
                     this.services.splice(index,1);
@@ -93,7 +93,7 @@ export default {
         },
         getPermMsg: function(perm){
             switch (String(perm).toLowerCase()) {
-    
+
                 case "read_uuid":
                     return "あなたを識別します";
                 case "edit_uuid":
@@ -118,12 +118,12 @@ export default {
     data () {
         return {
             services: [
-                
+
             ],
         }
     },
     // created: {
-        
+
     // }
 
 }

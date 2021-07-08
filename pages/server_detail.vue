@@ -91,7 +91,7 @@
 export default {
 	created: function() {
 		this.query = this.$route.query.id;
-		var apiserver = "http://den3-sit.tk";
+		var apiserver = "https://den3-idp.herokuapp.com";
 		fetch(apiserver + '/api/v1/service?id=' + this.$route.query.id, {
 			method: 'get',
 			headers: new Headers({

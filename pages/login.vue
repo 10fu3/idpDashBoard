@@ -77,13 +77,13 @@ export default {
                 };
             },
     created: function () {
-                this.apiserver = 'http://den3-sit.tk';
+                this.apiserver = 'https://den3-idp.herokuapp.com';
 
                 if(localStorage.getItem('authorization')){
                     let response = fetch(this.apiserver+'/api/v1/account/token', {
                         method: 'get',
                         headers: new Headers({
-                            'Authorization': localStorage.getItem('authorization'), 
+                            'Authorization': localStorage.getItem('authorization'),
                         })
                     });
                     response.then(r=>{
@@ -92,7 +92,7 @@ export default {
                             fetch(this.apiserver+'/api/v1/account/profile', {
                                 method: 'get',
                                 headers: new Headers({
-                                    'Authorization': localStorage.getItem('authorization'), 
+                                    'Authorization': localStorage.getItem('authorization'),
                                 }),
                             }).then(d=>d.json()).then(profile=>{
                                 this.usericon = profile.icon;
@@ -113,7 +113,7 @@ export default {
                         method: 'post',
                         mode: 'cors',
                         headers: new Headers({
-                            'Authorization': localStorage.getItem('authorization'), 
+                            'Authorization': localStorage.getItem('authorization'),
                         })
                     }).then(j=>{
                         localStorage.removeItem('authorization');

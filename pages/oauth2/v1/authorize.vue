@@ -78,24 +78,24 @@
             if(localStorage.getItem("authorization") === null){
                 this.$router.push({ path:`/login?redirect=${encodeURI(location.href)}` })
             }
-            this.api_server = "http://den3-sit.tk";      
+            this.api_server = "https://den3-idp.herokuapp.com/";
             let token_response = fetch(this.api_server+'/api/v1/account/token', {
                     method: 'get',
                     headers: new Headers({
-                        'Authorization': localStorage.getItem('authorization'), 
+                        'Authorization': localStorage.getItem('authorization'),
                     })
                 });
                 token_response.then(r=>{
-                    if(r.ok){       
+                    if(r.ok){
                         fetch(this.api_server+'/api/v1/account/profile', {
                             method: 'get',
                             headers: new Headers({
-                                'Authorization': localStorage.getItem('authorization'), 
+                                'Authorization': localStorage.getItem('authorization'),
                             }),
                         }).then(d=>d.json()).then(profile=>{
                             this.user_icon = profile.icon;
                             this.user_name = profile.nick;
-                        });     
+                        });
                         this.client_id =  this.$route.query.client_id
                         fetch(this.api_server+'/api/v1/service/', {
                              method: 'get',
@@ -132,11 +132,11 @@
         },
         methods: {
             login: function () {
-                fetch(this.api_server+location.href.replace(String(document.URL.split(":")[0]+"://"+document.domain),"").replace(":3000",""), { 
+                fetch(this.api_server+location.href.replace(String(document.URL.split(":")[0]+"://"+document.domain),"").replace(":3000",""), {
                     method: 'post',
                     headers: {
                         'Content-Type': 'text/plain;charset=UTF-8',
-                        'Authorization': localStorage.getItem('authorization'), 
+                        'Authorization': localStorage.getItem('authorization'),
                     },
                 }).then(d=>{
                     if(d.ok){

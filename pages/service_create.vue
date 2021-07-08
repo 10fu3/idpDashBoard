@@ -96,7 +96,7 @@
           alert(mes);
           return;
         }
-        
+
         this.lists[fileIndex].file = f;
         this.lists[fileIndex].fileName = f.name;
       },
@@ -108,7 +108,7 @@
               if(value == null || value == undefined){
                 mes = "画像がアップロードされていません"
               }else{
-                
+
                 var piriod = value.split('.');
                 switch(piriod[piriod.length-1]){
                   case 'png':
@@ -176,7 +176,7 @@
             return;
         }
 
-        var apiserver = "http://den3-sit.tk";
+        var apiserver = "https://den3-idp.herokuapp.com";
 
         var icon_get_url = function (file,callback) {
             const formData = new FormData();
@@ -198,7 +198,7 @@
           fetch(apiserver+"/api/v1/service/",{
             method:'post',
             headers: new Headers({
-              'Authorization': localStorage.getItem('authorization'), 
+              'Authorization': localStorage.getItem('authorization'),
             }),
             body: JSON.stringify(sendData)
           })
@@ -235,7 +235,7 @@
             data["icon_url"] = url;
             send(data);
         })
-        
+
       },
     },
     data () {
@@ -245,7 +245,7 @@
             lists:[
               {
                 rule: value => {
-                  
+
                 },
                 fileName: '',
                 input: null,
