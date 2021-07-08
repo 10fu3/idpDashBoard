@@ -58,7 +58,7 @@
 <script>
 export default {
     mounted: function(){
-        this.apiserver = 'http://den3-sit.tk';
+        this.apiserver = 'https://den3-idp.herokuapp.com';
         if(localStorage.getItem('authorization')){
             let response = fetch(this.apiserver+'/api/v1/service/', {
                 method: 'get',
