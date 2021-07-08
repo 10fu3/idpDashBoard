@@ -176,7 +176,7 @@
       },
       change_request: function (id,changeVal,index) {
         this.lists[index].input = '';
-        var apiserver = "http://den3-sit.tk";
+        var apiserver = "https://den3-idp.herokuapp.com";
         var value = null;
         var mes = '';
         if(id === "icon"){
